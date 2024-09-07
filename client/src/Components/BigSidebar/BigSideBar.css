@@ -1,0 +1,24 @@
+.bigsidebar-container {
+  width: 275px;
+  height: 100vh;
+  box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.upper-container {
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
+  margin-left: 83px;
+}
+
+.lower-container {
+  margin-top: 80px;
+}
+
+.lower-container div {
+  display: flex;
+  font-size: 22px;
+  gap: 15px;
+  margin-top: 40px;
+  color: rgb(51, 60, 70);
+}

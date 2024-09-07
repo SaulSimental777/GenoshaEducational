@@ -1,0 +1,36 @@
+.navbar-container {
+  height: 100px;
+  width: 1750px;
+  display: flex;
+  gap: 550px;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.nav-right button {
+  display: flex;
+  height: 35px;
+  width: 150px;
+  margin-top: 40px;
+  gap: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: #0099ff;
+  border: transparent;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+}
+.nav-right p {
+  margin-top: 5px;
+}
+
+.nav-middle {
+  margin-top: 40px;
+  font-size: 35px;
+}
+
+.nav-left {
+  margin-top: 25px;
+  margin-left: 25px;
+  cursor: pointer;
+}

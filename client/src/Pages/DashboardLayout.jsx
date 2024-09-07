@@ -1,8 +1,13 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import Dashboard from '../Components/Dashboard/Dashboard'
 
 const DashboardLayout = () => {
   return (
-    <div>DashboardLayout</div>
+    <>
+      <Dashboard/>
+      <Outlet/>
+    </>
   )
 }
 
