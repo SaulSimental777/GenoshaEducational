@@ -1,26 +1,29 @@
 import React from 'react'
 import './Navbar.css'
 import { HiMenuAlt1 } from "react-icons/hi"
-import { TiUserOutline } from "react-icons/ti";
-import { IoIosArrowDown } from "react-icons/io";
+import { PiBarbellLight } from "react-icons/pi";
+import { useDashboardContext } from '../../Pages/DashboardLayout';
 
 const Navbar = () => {
+  const {toggleSideBar} = useDashboardContext()
   return (
-    <div className="navbar-container">
-        <div className="nav-left">
-            <HiMenuAlt1 size={50} color='#0099ff'/>
-        </div>
-        <div className="nav-middle">
-            <p>Welcome Back!</p>
-        </div>
-        <div className="nav-right">
-            <button>
-                <TiUserOutline size={28} color='white'/>
-                <p>Aaron</p>
-                <IoIosArrowDown size={28} color='white'/>
+    <div className="navbar">
+        <div className="nav-center">
+            <button className="toggle-btn" onClick={toggleSideBar}>
+                <HiMenuAlt1 color='#0099ff'/>
             </button>
+            <div>
+                <div className="logo">
+                  <PiBarbellLight size={100} color='#0099ff'/>
+                </div>
+                <h4 className="logo-text">Dashboard</h4>
+            </div>
+            <div className="btn-container">
+              <button>User</button>
+            </div>
         </div>
     </div>
+
   )
 }
 
