@@ -14,7 +14,11 @@ const recipeSchema = new mongoose.Schema(
         totalProteins:Number,
         totalFats:Number,
         totalCarbs:Number,
-        description:String
+        description:String,
+        createdBy:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'User'
+        }
     }
 );
 

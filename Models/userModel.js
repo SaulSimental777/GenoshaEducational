@@ -24,7 +24,12 @@ const userSchema = new mongoose.Schema(
         recipes:[{
             type:mongoose.Schema.Types.ObjectId,
             ref: 'Recipe'
-        }]
+        }],
+        role:{
+            type:String,
+            enum:['user', 'admin'],
+            default:'user',
+        }
 
 
     }
