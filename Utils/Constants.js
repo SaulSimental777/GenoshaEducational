@@ -3,3 +3,8 @@ export const GOAL_CATEGORY = {
     GAIN: 'gain_weight',
     MUSCLE: 'gain_muscle'
 }
+
+export const GENDER_CATEGORY = {
+    MALE: 'male',
+    FEMALE: 'female'
+}

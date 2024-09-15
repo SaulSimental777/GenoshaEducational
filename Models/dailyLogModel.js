@@ -11,26 +11,14 @@ const dailyLogSchema = new mongoose.Schema(
             type:mongoose.Schema.Types.ObjectId,
             ref: 'Recipe'
         }],
-        totalBreakfastCalories:Number,
-        totalBreakfastProtein:Number,
-        totalBreakfastCarbs:Number,
         lunch:[{
             type:mongoose.Schema.Types.ObjectId,
             ref: 'Recipe'
         }],
-        totalLunchCalories:Number,
-        totalLunchProtein:Number,
-        totalLunchCarbs:Number,
         dinner:[{
             type:mongoose.Schema.Types.ObjectId,
             ref: 'Recipe'
         }],
-        totalDinnerCalories:Number,
-        totalDinnerProtein:Number,
-        totalDinnerCarbs:Number,
-        totalDayCalories:Number,
-        totalDayProtein:Number,
-        totalDayCarbs:Number,
         routine:{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Routine'

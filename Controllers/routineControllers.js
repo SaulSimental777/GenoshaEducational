@@ -60,7 +60,7 @@ export const removeExercise = async(req, res) => {
     let routine = await Routine.findById(routineId)
 
     const exerciseIndex = routine.exercises.findIndex(e => e.exercise.toString() === exerciseId);
-    routine.exercises.splice(exerciseIndex)
+    routine.exercises.splice(exerciseIndex, 1)
     await routine.save()
 
     res.status(StatusCodes.OK).json({ msg: 'Exercise removed succesfully', routine})

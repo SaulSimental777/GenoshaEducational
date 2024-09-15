@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { GOAL_CATEGORY } from "../Utils/Constants";
+import { GOAL_CATEGORY, GENDER_CATEGORY } from "../Utils/Constants";
 
 const userSchema = new mongoose.Schema(
     {
@@ -10,13 +10,17 @@ const userSchema = new mongoose.Schema(
         age: Number,
         weight:Number,
         height:Number,
+        gender:{
+            type:String,
+            enum: Object.values(GENDER_CATEGORY),
+            default: GENDER_CATEGORY.MALE
+
+        },
         goal: {
             type:String,
             enum:Object.values(GOAL_CATEGORY),
             default: GOAL_CATEGORY.LOSE
         },
-        bodyFatPercentage: Number,
-        leanMass:Number,
         routines:[{
             type:mongoose.Schema.Types.ObjectId,
             ref: 'Routine'

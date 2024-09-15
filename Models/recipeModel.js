@@ -10,10 +10,6 @@ const recipeSchema = new mongoose.Schema(
             },
             quantity: Number
         }],
-        totalCalories:Number,
-        totalProteins:Number,
-        totalFats:Number,
-        totalCarbs:Number,
         description:String,
         createdBy:{
             type: mongoose.Schema.Types.ObjectId,
