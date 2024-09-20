@@ -20,7 +20,10 @@ const Landing = () => {
                     calorie tracking and workout plans you'll have the tools you
                     need to take your fitness to the next level.
                 </p>
-                <Link to='/login-register'><button>Register/Login</button></Link>
+                <div className="btn-options">
+                    <Link to='/register'><button>Register</button></Link>
+                    <Link to='/login'><button>Login</button></Link>
+                </div>
             </div>
             <div className="hero-image">
                 <img src={landing_image} alt="landing_image" />

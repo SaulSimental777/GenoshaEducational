@@ -13,9 +13,12 @@ import {
   FoodDisplayPage,
   WorkoutDisplayPage,
   DailyLogPage,
-  LoginRegisterPage,
+  RegisterPage,
+  LoginPage,
   DashboardLayout
 } from './Pages'
+
+import { action as registerAction } from './Components/RegisterComponent/RegisterComponent'
 
 
 
@@ -33,8 +36,15 @@ const router = createBrowserRouter([
 
       },
       {
-        path:"login-register",
-        element: <LoginRegisterPage/>
+        path:"register",
+        element: <RegisterPage/>,
+        action: registerAction
+        
+
+      },
+      {
+        path:"login",
+        element:<LoginPage/>
 
       },
       {
