@@ -7,7 +7,8 @@ const foodSchema = new mongoose.Schema(
         protein:Number,
         carbs:Number,
         fats:Number,
-        portionSize:Number
+        portionSize:Number,
+        image:String,
 
     }
 

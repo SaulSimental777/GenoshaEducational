@@ -37,9 +37,19 @@ export const deleteRecipe = async (req, res) => {
     res.status(StatusCodes.OK).json({msg: 'recipe deleted', recipe: removedRecipe})
 }
 
+export const updateRecipe = async(req, res) => {
+
+    const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
+        new:true
+    })
+
+    res.status(StatusCodes.OK).json({ msg: 'recipe modified: ', recipe: updatedRecipe})
+
+}
+
 export const appendFood = async (req, res) => {
     let recipe = await Recipe.findById(req.params.id);
-    let food = await Food.findOne({id: req.params.id});
+    let food = await Food.findById(req.body.foodId);
     recipe.food.push(food._id)
     await recipe.save();
 

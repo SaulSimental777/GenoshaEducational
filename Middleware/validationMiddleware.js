@@ -44,6 +44,7 @@ export const validateFoodInput = withValidationErrors([
     body('carbs').notEmpty().withMessage('Carbs per portion are required'),
     body('fats').notEmpty().withMessage('Fats per portion are required'),
     body('portionSize').notEmpty().withMessage('Portion size is required'),
+    body('image').notEmpty().withMessage('Image of the food is required'),
 ]);
 
 export const validateRegisterInput = withValidationErrors([

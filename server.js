@@ -27,5 +27,53 @@ try {
 app.use(cookieParser());
 app.use(express.json());
 
+// routers
+
+import routineRouter from './Routes/routineRouter.js'
+import recipeRouter from './Routes/recipeRouter.js'
+import foodRouter from './Routes/foodRouter.js'
+import exerciseRouter from './Routes/exerciseRouter.js'
+import userRouter from './Routes/userRouter.js'
+import authRouter from './Routes/authRouter.js'
 
 
+// middleware
+
+import errorHandlerMiddleware from './Middleware/errorHandlerMiddleware.js'
+import { authenticateUser } from './Middleware/authMiddleware.js';
+
+
+//public
+
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+app.use(express.static(path.resolve(__dirname, "./public/uploads")));
+
+// Routes
+
+app.use('/api/v1/routines', routineRouter);
+app.use('/api/v1/recipes', recipeRouter);
+app.use('/api/v1/exercises', exerciseRouter);
+app.use('/api/v1/food', foodRouter);
+app.use('/api/v1/users', authenticateUser,userRouter);
+app.use('/api/v1/auth', authRouter);
+
+// NOT FOUND 
+app.use('*', (req, res) => {
+    res.status(404).json({ msg: 'not found' })
+})
+
+app.use(errorHandlerMiddleware);
+
+// INTERNAL SERVER ERROR
+
+app.use((err, req, res, next) => {
+
+    console.log(err)
+    res.status(500).json({msg: 'something went wrong'})
+
+})

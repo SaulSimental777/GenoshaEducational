@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { GOAL_CATEGORY, GENDER_CATEGORY } from "../Utils/Constants";
+import { GOAL_CATEGORY, GENDER_CATEGORY } from "../Utils/Constants.js";
 
 const userSchema = new mongoose.Schema(
     {

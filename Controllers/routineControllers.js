@@ -41,9 +41,19 @@ export const deleteRoutine = async(req, res) => {
 
 }
 
+export const updateRoutine = async(req, res) => {
+
+    const updatedRoutine = await Routine.findByIdAndUpdate(req.params.id, req.body, {
+        new:true
+    })
+
+    res.status(StatusCodes.OK).json({ msg: 'routine modified: ', routine: updatedRoutine})
+
+}
+
 export const appendExercise = async(req, res) => {
     let routine = await Routine.findById(req.params.id);
-    let exercise = await Exercise.findOne({id: req.params.id});
+    let exercise = await Exercise.findById(req.body.exerciseId);
     routine.exercises.push(exercise._id)
     await routine.save();
 
