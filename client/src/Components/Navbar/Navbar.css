@@ -34,6 +34,16 @@
   display: flex;
   align-items: center;
 }
+
+.btn-container button {
+  background-color: #0099ff;
+  border-color: grey;
+  border-radius: 10px;
+  width: 65px;
+  height: 40px;
+  color: white;
+}
+
 @media (min-width: 992px) {
   .nav-center {
     width: 90%;
@@ -47,5 +57,10 @@
 
   .toggle-btn {
     display: none;
+  }
+
+  .btn-container button {
+    width: 100px;
+    height: 35px;
   }
 }
