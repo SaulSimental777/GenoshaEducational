@@ -223,30 +223,56 @@ else {
                     <h2>{user.name}</h2><h2>{user.lastName}</h2>
                 </div>
                 <div className="data-container">
-                    <LiaBirthdayCakeSolid size={25}/>
+                    <LiaBirthdayCakeSolid size={20}/>
                     <p>Age:</p><p>{age}</p>
                 </div>
                 <div className="data-container">
-                    <GiWeightScale size={25}/>
+                    <GiWeightScale size={20}/>
                     <p>Weight:</p><p>{user.weight} kg</p>
                 </div>
                 <div className="data-container">
-                    <CiLineHeight size={25}/>
+                    <CiLineHeight size={20}/>
                     <p>Height:</p><p>{user.height} cm</p>
                 </div>
                 <div className="data-container">
-                    <GiBiceps size={25}/>
+                    <GiBiceps size={20}/>
                     <p>Estimated Lean Mass:</p><p>{Math.round(LBM)} kg</p>
                 </div>
             </div>
+            <div className="bfp-container">
+            <svg>
+                <circle
+                cx="70"
+                cy="70"
+                r="70"
+                stroke="#e0e0e0"
+                strokeWidth="10"
+                fill="none"
+                ></circle>
+                <circle
+                cx="70"
+                cy="70"
+                r="70"
+                stroke="#0099ff"
+                strokeWidth="10"
+                strokeLinecap="round"
+                fill="none"
+                style={{
+                    strokeDasharray: `${2 * Math.PI * 70}`,
+                    strokeDashoffset: `${(1 - BFP / 100) * 2 * Math.PI * 70}`,
+                    transition: 'stroke-dashoffset 0.5s ease-in-out',
+                }}
+                ></circle>
+            </svg>
+                <div className="number">
+                    <h2>{Math.round(BFP)}<span>%</span></h2>
+                </div>
+                <h3>Body Fat Percentage</h3>
+            </div>
             <div className="bmi-container">
                 <div className="data-container">
-                    <BiStats/>
                     <p>Body Mass Index</p><p>{Math.round(IMC)}</p>
                 </div>
-            </div>
-            <div className="bfp-container">
-                <p>Body Fat Percentage</p><p>{Math.round(BFP)}</p>
             </div>
         </div>
         <div className="calories-container">

@@ -10,11 +10,11 @@
   height: 250px;
   border-radius: 12px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-  justify-content: space-between;
+  gap: 325px;
 }
 
 .userData-left-container {
-  margin-top: 15px;
+  margin-top: 20px;
   margin-left: 10px;
 }
 
@@ -25,9 +25,9 @@
 
 .data-container {
   display: flex;
-  margin-top: 15px;
+  margin-top: 20px;
   gap: 5px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .calories-container {
@@ -45,4 +45,24 @@
   border-radius: 12px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
   width: 450px;
+}
+
+.bfp-container circle {
+  fill: none;
+  transform: translate(75px, 5px);
+}
+
+.bfp-container {
+  margin-top: 25px;
+}
+
+.bfp-container h3 {
+  margin-top: 12px;
+  margin-left: 65px;
+}
+
+.number {
+  position: absolute;
+  padding-left: 125px;
+  top: 215px;
 }
