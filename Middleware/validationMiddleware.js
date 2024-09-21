@@ -1,6 +1,6 @@
 import { body, param, validationResult } from 'express-validator'
 import { BadRequestError, NotFoundError, UnauthorizedError } from '../Errors/customErrors.js'
-import { GOAL_CATEGORY } from '../Utils/Constants.js'
+import { GOAL_CATEGORY, PAL_CATEGORY } from '../Utils/Constants.js'
 import { GENDER_CATEGORY } from '../Utils/Constants.js'
 import User from '../Models/userModel.js'
 
@@ -68,6 +68,7 @@ export const validateRegisterInput = withValidationErrors([
     body('height').notEmpty().withMessage('Height is required'),
     body('gender').isIn(Object.values(GENDER_CATEGORY)).withMessage('Invalid gender value'),
     body('goal').isIn(Object.values(GOAL_CATEGORY)).withMessage('Invalid goal category'),
+    body('pal').isIn(Object.values(PAL_CATEGORY)).withMessage('Invalid physical activity level category'),
 ]);
 
 export const validateLoginInput = withValidationErrors([

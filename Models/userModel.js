@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { GOAL_CATEGORY, GENDER_CATEGORY } from "../Utils/Constants.js";
+import { GOAL_CATEGORY, GENDER_CATEGORY, PAL_CATEGORY } from "../Utils/Constants.js";
 
 const userSchema = new mongoose.Schema(
     {
@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema(
             type:String,
             enum:Object.values(GOAL_CATEGORY),
             default: GOAL_CATEGORY.LOSE
+        },
+        pal: {
+            type:String,
+            enum:Object.values(PAL_CATEGORY),
+            default: PAL_CATEGORY.EX_INACTIVE
         },
         routines:[{
             type:mongoose.Schema.Types.ObjectId,

@@ -1,10 +1,19 @@
 export const GOAL_CATEGORY = {
-    LOSE: 'lose_weight',
-    GAIN: 'gain_weight',
-    MUSCLE: 'gain_muscle'
+    LOSE: 'Lose weight',
+    GAIN: 'Gain weight',
+    MUSCLE: 'Gain muscle'
 }
 
 export const GENDER_CATEGORY = {
-    MALE: 'male',
-    FEMALE: 'female'
+    MALE: 'Male',
+    FEMALE: 'Female'
+}
+
+export const PAL_CATEGORY = {
+    EX_INACTIVE: 'Extremely inactive',
+    SEDENTARY:'Sedentary',
+    MOD_ACTIVE: 'Moderately active',
+    V_ACTIVE: 'Vigorously active',
+    EX_ACTIVE: 'Extremely active'
+
 }

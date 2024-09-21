@@ -4,7 +4,7 @@ import { Form, redirect, useNavigation, Link} from 'react-router-dom'
 import customFetch from '../../Utils/customFetch'
 import { toast } from 'react-toastify'
 import { PiBarbellLight } from "react-icons/pi";
-import { GENDER_CATEGORY } from '../../../../Utils/Constants'
+import { GENDER_CATEGORY, PAL_CATEGORY } from '../../../../Utils/Constants'
 import { GOAL_CATEGORY } from '../../../../Utils/Constants'
 
 export const action = async ({request}) => {
@@ -89,6 +89,20 @@ const RegisterComponent = () => {
                     <p>Goal</p>
                     <select   name="goal" >
                         {Object.values(GOAL_CATEGORY).map((itemValue) => {
+                        return(
+                            <option key={itemValue} value= {itemValue}>
+                            {itemValue}
+                            </option>
+                        );
+                        })}
+                    </select>
+                </div>
+            </div>
+            <div className="signup-large-field">
+                <div className="signup-containers">
+                    <p>Physical activity level</p>
+                    <select   name="pal" >
+                        {Object.values(PAL_CATEGORY).map((itemValue) => {
                         return(
                             <option key={itemValue} value= {itemValue}>
                             {itemValue}

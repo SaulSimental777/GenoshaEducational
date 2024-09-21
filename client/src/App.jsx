@@ -19,6 +19,8 @@ import {
 } from './Pages'
 
 import { action as registerAction } from './Components/RegisterComponent/RegisterComponent'
+import { action as loginAction } from './Components/LoginComponent/LoginComponent'
+import { loader as profileLoader } from './Components/HomeStatsComponent/HomeStatsComponent'
 
 
 
@@ -44,7 +46,8 @@ const router = createBrowserRouter([
       },
       {
         path:"login",
-        element:<LoginPage/>
+        element:<LoginPage/>,
+        action: loginAction
 
       },
       {
@@ -53,7 +56,8 @@ const router = createBrowserRouter([
         children:[
           {
             index:true,
-            element: <HomeStatsPage/>
+            element: <HomeStatsPage/>,
+            loader: profileLoader,
 
           },
           {
