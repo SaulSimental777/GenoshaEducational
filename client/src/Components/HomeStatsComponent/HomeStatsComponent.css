@@ -1,0 +1,48 @@
+.stats-container {
+  display: grid;
+}
+
+.userData-container {
+  background-color: white;
+  margin-left: 250px;
+  display: flex;
+  gap: 5px;
+  height: 250px;
+  border-radius: 12px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+}
+
+.userData-left-container {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.name-container {
+  display: flex;
+  gap: 5px;
+}
+
+.data-container {
+  display: flex;
+  margin-top: 15px;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.calories-container {
+  margin-top: 50px;
+  display: flex;
+  margin-left: 250px;
+  justify-content: space-between;
+}
+
+.macros-container {
+  background-color: white;
+  display: flex;
+  gap: 5px;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  width: 450px;
+}

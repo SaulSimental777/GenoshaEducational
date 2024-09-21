@@ -2,6 +2,11 @@ import React from 'react'
 import './HomeStatsComponent.css'
 import { redirect, useLoaderData } from 'react-router-dom';
 import customFetch from '../../Utils/customFetch';
+import { GiWeightScale } from "react-icons/gi";
+import { CiLineHeight } from "react-icons/ci";
+import { GiBiceps } from "react-icons/gi";
+import { BiStats } from "react-icons/bi";
+import { LiaBirthdayCakeSolid } from "react-icons/lia";
 
 export const loader = async () => {
     try {
@@ -211,7 +216,55 @@ else {
 
 
   return (
-    <div>HomeStatsComponent</div>
+    <div className="stats-cotntainer">
+        <div className="userData-container">
+            <div className="userData-left-container">
+                <div className="name-container">
+                    <h2>{user.name}</h2><h2>{user.lastName}</h2>
+                </div>
+                <div className="data-container">
+                    <LiaBirthdayCakeSolid size={25}/>
+                    <p>Age:</p><p>{age}</p>
+                </div>
+                <div className="data-container">
+                    <GiWeightScale size={25}/>
+                    <p>Weight:</p><p>{user.weight} kg</p>
+                </div>
+                <div className="data-container">
+                    <CiLineHeight size={25}/>
+                    <p>Height:</p><p>{user.height} cm</p>
+                </div>
+                <div className="data-container">
+                    <GiBiceps size={25}/>
+                    <p>Estimated Lean Mass:</p><p>{Math.round(LBM)} kg</p>
+                </div>
+            </div>
+            <div className="bmi-container">
+                <div className="data-container">
+                    <BiStats/>
+                    <p>Body Mass Index</p><p>{Math.round(IMC)}</p>
+                </div>
+            </div>
+            <div className="bfp-container">
+                <p>Body Fat Percentage</p><p>{Math.round(BFP)}</p>
+            </div>
+        </div>
+        <div className="calories-container">
+            <div className="macros-container">
+                <h3>Harris Benedict</h3>
+
+            </div>
+            <div className="macros-container">
+                <h3>Mifflin-St Jeor</h3>
+
+            </div>
+            <div className="macros-container">
+                <h3>Katch-McArdle</h3>
+
+            </div>
+        </div>
+
+    </div>
   )
 }
 
