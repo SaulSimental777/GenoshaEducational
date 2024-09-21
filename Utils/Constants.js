@@ -1,6 +1,6 @@
 export const GOAL_CATEGORY = {
     LOSE: 'Lose weight',
-    GAIN: 'Gain weight',
+    MAINTAIN: 'Maintain weight',
     MUSCLE: 'Gain muscle'
 }
 

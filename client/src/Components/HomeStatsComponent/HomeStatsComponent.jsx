@@ -16,19 +16,19 @@ export const loader = async () => {
 
 const HomeStatsComponent = () => {
   const { user } = useLoaderData();
+  
 
   // Edad del usuario
-  const userAge = new Date(user.birthDate)
+  const birthDate = new Date(user.birthDate)
   const actualDate = new Date()
-  let age = actualDate.getFullYear() - userAge.getFullYear();
+  let age = actualDate.getFullYear() - birthDate.getFullYear();
 
-  const monthDiff = actualDate.getMonth() - userAge.getMonth();
-  const dayDiff = actualDate.getDate() - userAge.getDate();
+  const monthDiff = actualDate.getMonth() - birthDate.getMonth();
+  const dayDiff = actualDate.getDate() - birthDate.getDate();
 
   if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
     age--;
   }
-  console.log(age)
 
   // IMC del usuario
 
@@ -36,7 +36,22 @@ const HomeStatsComponent = () => {
   const userHeight = (user.height / 100)
 
   let IMC = Math.round((userWeight/(userHeight*userHeight)))
-  console.log(IMC)
+
+    // Porcentaje de grasa segun el IMC (menos preciso)
+
+    let BFP = 0
+    if(user.gender = 'Male'){
+    BFP = (1.20 * IMC) + (0.23 * age) - (10.8 * 1) -5.4
+
+    }
+    else{
+    BFP = (1.20 * IMC) + (0.23 * age) - (10.8 * 0) -5.4
+    }
+
+
+// Masa magra (estimado)
+
+let LBM = user.weight * (1 - (BFP/100))
 
   // Formula de Harris Benedict
 
@@ -81,7 +96,32 @@ if (user.gender == 'Male') {
     }
 }
 
-console.log('Harris total = ', Math.round(TotalHarris_TMB))
+let userTotalCalories = 0
+let harrisProtein = 0
+let harrisFat = 0
+let harrisCarbs = 0
+
+if(user.goal === 'Lose weight'){
+    userTotalCalories = TotalHarris_TMB - 500
+    harrisProtein = 2.2 * user.weight
+    harrisFat = (0.30 * userTotalCalories) / 9
+    harrisCarbs = (userTotalCalories - ((harrisProtein * 4) + (0.30 * userTotalCalories))) / 4
+
+}
+else if (user.goal === 'Gain muscle'){
+    userTotalCalories = TotalHarris_TMB + 500
+    harrisProtein = 1.8 * user.weight
+    harrisFat = (0.25 * userTotalCalories) / 9
+    harrisCarbs = (userTotalCalories - ((harrisProtein * 4) + (0.25 * userTotalCalories))) / 4
+}
+else {
+    userTotalCalories = TotalHarris_TMB
+    userTotalCalories = TotalHarris_TMB + 500
+    harrisProtein = 2.0 * user.weight
+    harrisFat = (0.30 * userTotalCalories) / 9
+    harrisCarbs = (userTotalCalories - ((harrisProtein * 4) + (0.25 * userTotalCalories))) / 4
+}
+
 
 // Formula de Mifflin-St Jeor
 
@@ -94,9 +134,80 @@ else{
     Mifflin_TMB = (10 * user.weight) + (6.25 * user.height) - (5 * age) - 161
 }
 
-console.log('Mifflin total = ', Mifflin_TMB)
+
+let CaloriesMifflin = 0
+let mifflinProtein = 0
+let mifflinFat = 0
+let mifflinCarbs = 0
+
+if(user.goal === 'Lose weight'){
+    CaloriesMifflin = Mifflin_TMB - 500
+    mifflinProtein = 2.2 * user.weight
+    mifflinFat = (0.30 * CaloriesMifflin) / 9
+    mifflinCarbs = (CaloriesMifflin - ((mifflinProtein * 4) + (0.30 * CaloriesMifflin))) / 4
+
+}
+else if (user.goal === 'Gain muscle'){
+    CaloriesMifflin = Mifflin_TMB + 500
+    mifflinProtein = 1.8 * user.weight
+    mifflinFat = (0.25 * CaloriesMifflin) / 9
+    mifflinCarbs = (CaloriesMifflin - ((mifflinProtein * 4) + (0.25 * CaloriesMifflin))) / 4
+}
+else {
+    CaloriesMifflin = Mifflin_TMB
+    CaloriesMifflin = Mifflin_TMB + 500
+    mifflinProtein = 2.0 * user.weight
+    mifflinFat = (0.30 * CaloriesMifflin) / 9
+    mifflinCarbs = (CaloriesMifflin - ((mifflinProtein * 4) + (0.25 * CaloriesMifflin))) / 4
+}
 
 
+// Formula de Katch-McArdle
+
+let Katch_TMB = 370 + (21.6 * LBM)
+let TotalKatch_TMB= 0
+
+if (user.pal === 'Extremely inactive'){
+    TotalKatch_TMB = Katch_TMB * 1.2
+}
+else if (user.pal === 'Sedentary'){
+    TotalKatch_TMB = Katch_TMB * 1.375
+}
+else if( user.pal === 'Moderately active'){
+    TotalKatch_TMB = Katch_TMB * 1.55
+}
+else if (user.pal === 'Vigorously active'){
+    TotalKatch_TMB = Katch_TMB * 1.725
+}
+else{
+    TotalKatch_TMB = Katch_TMB * 1.9
+}
+
+
+let CaloriesKatch = 0
+let katchProtein = 0
+let katchFat = 0
+let katchCarbs = 0
+
+if(user.goal === 'Lose weight'){
+    CaloriesKatch = TotalKatch_TMB - 500
+    katchProtein = 2.2 * user.weight
+    katchFat = (0.30 * CaloriesKatch) / 9
+    katchCarbs = (CaloriesKatch - ((katchProtein * 4) + (0.30 * CaloriesKatch))) / 4
+
+}
+else if (user.goal === 'Gain muscle'){
+    CaloriesKatch = TotalKatch_TMB + 500
+    katchProtein = 1.8 * user.weight
+    katchFat = (0.25 * CaloriesKatch) / 9
+    katchCarbs = (CaloriesKatch - ((katchProtein * 4) + (0.25 * CaloriesKatch))) / 4
+}
+else {
+    CaloriesKatch = TotalKatch_TMB
+    katchProtein = 2.0 * user.weight
+    katchFat = (0.30 * CaloriesKatch) / 9
+    katchCarbs = (CaloriesKatch - ((katchProtein * 4) + (0.30 * CaloriesKatch))) / 4
+}
 
 
   return (
