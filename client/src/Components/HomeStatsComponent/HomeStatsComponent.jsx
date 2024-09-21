@@ -5,8 +5,11 @@ import customFetch from '../../Utils/customFetch';
 import { GiWeightScale } from "react-icons/gi";
 import { CiLineHeight } from "react-icons/ci";
 import { GiBiceps } from "react-icons/gi";
-import { BiStats } from "react-icons/bi";
 import { LiaBirthdayCakeSolid } from "react-icons/lia";
+import { IoStatsChartOutline } from "react-icons/io5";
+import { BarChart, Bar, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Sector, Cell } from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 
 export const loader = async () => {
     try {
@@ -52,6 +55,7 @@ const HomeStatsComponent = () => {
     else{
     BFP = (1.20 * IMC) + (0.23 * age) - (10.8 * 0) -5.4
     }
+
 
 
 // Masa magra (estimado)
@@ -214,6 +218,61 @@ else {
     katchCarbs = (CaloriesKatch - ((katchProtein * 4) + (0.30 * CaloriesKatch))) / 4
 }
 
+// Grafico de Harris
+
+const data = [
+    {
+        name: 'Proteins',
+        uv: harrisProtein
+
+    },
+    {
+        name: 'Fats',
+        uv: harrisFat
+    },
+    {
+        name: 'Carbs',
+        uv: harrisCarbs
+    }
+]
+
+// Grafico de Mifflin
+
+const mifflinData = [
+
+    { name: 'Proteins', value: mifflinProtein},
+    { name: 'Fats', value: mifflinFat},
+    { name: 'Carbs', value: mifflinCarbs}
+
+]
+
+const COLORS = ['#0099ff'];
+
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+};
+
+
+// Grafico de Katch
+
+const katchData = [
+    {
+        subject: 'Proteins',
+        A: katchProtein
+    },
+    {
+        subject: 'Fats',
+        A: katchFat
+    },
+    {
+        subject:'Carbs',
+        A: katchCarbs
+    }
+]
+
 
   return (
     <div className="stats-cotntainer">
@@ -270,23 +329,125 @@ else {
                 <h3>Body Fat Percentage</h3>
             </div>
             <div className="bmi-container">
-                <div className="data-container">
-                    <p>Body Mass Index</p><p>{Math.round(IMC)}</p>
-                </div>
+                    <div className="desc-container">
+                        <h3>Body Mass Index (BMI)</h3>
+                        <h1>{Math.round(IMC)}</h1>
+                        <IoStatsChartOutline size={65} color='#0099ff' className='person-icon'/>
+                    </div>
+                    <div className="class-container">
+                        <div className="under-container">
+                            <h4>Underweight</h4>
+                            <p>{'< 18.5'}</p>
+                        </div>
+                        <div className="normal-container">
+                            <h4>Normal</h4>
+                            <p>18.5 - 24.9</p>
+                        </div>
+                        <div className="over-container">
+                            <h4>Overweight</h4>
+                            <p>25-29.9</p>
+                        </div>
+                        <div className="obese-container">
+                            <h4>Obese</h4>
+                            <p>≥ 30</p>
+                        </div>
+                 </div>
             </div>
         </div>
         <div className="calories-container">
             <div className="macros-container">
-                <h3>Harris Benedict</h3>
-
+                <div className="author-container">
+                    <h3>Harris Benedict</h3>
+                </div>
+                <div className="quantities-container">
+                    <div className="labels-container">
+                        <p>Calories:</p>
+                        <p>Proteins:</p>
+                        <p>Fats:</p>
+                        <p>Carbs:</p>
+                    </div>
+                    <div className="values-container">
+                        <p>{Math.round(TotalHarris_TMB)} kcal</p>
+                        <p>{Math.round(harrisProtein)} g</p>
+                        <p>{Math.round(harrisFat)} g</p>
+                        <p>{Math.round(harrisCarbs)} g</p>
+                    </div>
+                </div>
+                <div className="chart-container">
+                    <ResponsiveContainer width={350} height={200}>
+                        <BarChart data={data}>
+                            <Bar dataKey="uv" fill="#0099ff" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
             </div>
             <div className="macros-container">
-                <h3>Mifflin-St Jeor</h3>
-
+                <div className="author-container">
+                    <h3>Mifflin-St Jeor</h3>
+                </div>
+                <div className="quantities-container">
+                    <div className="labels-container">
+                        <p>Calories:</p>
+                        <p>Proteins:</p>
+                        <p>Fats:</p>
+                        <p>Carbs:</p>
+                    </div>
+                    <div className="values-container">
+                        <p>{Math.round(CaloriesMifflin)} kcal</p>
+                        <p>{Math.round(mifflinProtein)} g</p>
+                        <p>{Math.round(mifflinFat)} g</p>
+                        <p>{Math.round(mifflinCarbs)} g</p>
+                    </div>
+                </div>
+                <div className="chart-container">
+                    <ResponsiveContainer width={350} height={200}>
+                        <PieChart width={400} height={400}>
+                        <Pie
+                            data={mifflinData}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                        >
+                            {mifflinData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        </PieChart>
+                    </ResponsiveContainer>
+                </div>
             </div>
             <div className="macros-container">
-                <h3>Katch-McArdle</h3>
-
+                <div className="author-container">
+                    <h3>Katch-McArdle</h3>
+                </div>
+                <div className="quantities-container">
+                    <div className="labels-container">
+                        <p>Calories:</p>
+                        <p>Proteins:</p>
+                        <p>Fats:</p>
+                        <p>Carbs:</p>
+                    </div>
+                    <div className="values-container">
+                        <p>{Math.round(CaloriesKatch)} kcal</p>
+                        <p>{Math.round(katchProtein)} g</p>
+                        <p>{Math.round(katchFat)} g</p>
+                        <p>{Math.round(katchCarbs)} g</p>
+                    </div>
+                </div>
+                <div className="chart-container">
+                    <ResponsiveContainer width={375} height={250}>
+                        <RadarChart cx="50%" cy="50%" outerRadius="85%" data={katchData}>
+                        <PolarGrid />
+                        <PolarAngleAxis dataKey="subject" />
+                        <PolarRadiusAxis />
+                        <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#0099ff" fillOpacity={0.6} />
+                        </RadarChart>
+                    </ResponsiveContainer>
+                </div>
             </div>
         </div>
 
