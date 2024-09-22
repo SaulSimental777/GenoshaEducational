@@ -15,7 +15,8 @@ import {
   DailyLogPage,
   RegisterPage,
   LoginPage,
-  DashboardLayout
+  DashboardLayout,
+  AdminPage
 } from './Pages'
 
 import { action as registerAction } from './Components/RegisterComponent/RegisterComponent'
@@ -94,6 +95,33 @@ const router = createBrowserRouter([
           {
             path:"daily-log",
             element:<DailyLogPage/>
+          },
+          {
+            path:"admin",
+            children:[
+              {
+                index: true,
+                element: <AdminPage/>
+              },
+              {
+                path: "all-workout"
+              },
+              {
+                path:"all-food"
+              },
+              {
+                path:"add-workout"
+              },
+              {
+                path:"add-food"
+              },
+              {
+                path:"edit-workout/:workoutId"
+              },
+              {
+                path:"edit-food/:foodId"
+              }
+            ]
           }
         ]
       },

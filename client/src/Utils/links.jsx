@@ -6,6 +6,7 @@ import { FaList } from "react-icons/fa";
 import { LiaDumbbellSolid } from "react-icons/lia";
 import { BiFoodMenu } from "react-icons/bi";
 import { TbMessageChatbot } from "react-icons/tb";
+import { RiAdminLine } from "react-icons/ri";
 
 const links = [
     {
@@ -39,6 +40,12 @@ const links = [
         icon:<TbMessageChatbot/>
 
     },
+    {
+        text: 'Admin',
+        path: 'admin',
+        icon:<RiAdminLine/>
+
+    }
 ]
 
 export default links;
