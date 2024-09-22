@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './AdminPageComponent.css'
 import { IoFastFood } from "react-icons/io5";
 import { GiMuscleUp } from "react-icons/gi";
@@ -10,33 +11,40 @@ const AdminPageComponent = () => {
   return (
     <div className="admin-container">
         <div className="admin-container-top">
-            <div className="admin-menu-container">
-                <div className="select-container">
-                <TbSquareRoundedPlusFilled size={75} color='#0099ff' className='select-icon'/>
-                <h1>Add Food</h1>
+            <Link to= '/home/admin/add-food' style={{textDecoration: 'none', color: 'black'}}>
+                <div className="admin-menu-container">
+                    <div className="select-container">
+                    <TbSquareRoundedPlusFilled size={75} color='#0099ff' className='select-icon'/>
+                    <h1>Add Food</h1>
+                    </div>
                 </div>
-            </div>
-            <div className="admin-menu-container">
-                <div className="select-container-large">
-                    <BsPatchPlusFill size={75} color='#0099ff' className='select-icon-large'/>
-                    <h1>Add Workout</h1>
-
+            </Link>
+            <Link to= '/home/admin/add-workout' style={{textDecoration: 'none', color: 'black'}}>
+                <div className="admin-menu-container">
+                    <div className="select-container-large">
+                        <BsPatchPlusFill size={75} color='#0099ff' className='select-icon-large'/>
+                        <h1>Add Workout</h1>
+                    </div>
                 </div>
-            </div>
+            </Link>
         </div>
         <div className="admin-container-bottom">
+            <Link to= '/home/admin/all-food' style={{textDecoration: 'none', color: 'black'}}>
             <div className="admin-menu-container">
                 <div className="select-container">
                     <IoFastFood size={75} color='#0099ff' className='select-icon'/>
                     <h1>Food List</h1>
                 </div>
             </div>
+            </Link>
+            <Link to= '/home/admin/all-workout' style={{textDecoration: 'none', color: 'black'}}>
             <div className="admin-menu-container">
                 <div className="select-container-large">
                     <GiMuscleUp size={75} color='#0099ff' className='select-icon-large'/>
                     <h1>Workout List</h1>
                 </div>
             </div>
+            </Link>
         </div>
     </div>
   )

@@ -16,12 +16,18 @@ import {
   RegisterPage,
   LoginPage,
   DashboardLayout,
-  AdminPage
+  AdminPage,
+  AddWorkoutPage,
+  AddFoodPage 
+
 } from './Pages'
 
 import { action as registerAction } from './Components/RegisterComponent/RegisterComponent'
 import { action as loginAction } from './Components/LoginComponent/LoginComponent'
 import { loader as profileLoader } from './Components/HomeStatsComponent/HomeStatsComponent'
+import { action as addFoodAction } from './Components/AddFoodComponent/AddFoodComponent'
+import { action as addWorkoutAction } from './Components/AddWorkoutComponent/AddWorkoutComponent'
+
 
 
 
@@ -110,10 +116,14 @@ const router = createBrowserRouter([
                 path:"all-food"
               },
               {
-                path:"add-workout"
+                path:"add-workout",
+                element:<AddWorkoutPage/>,
+                action: addWorkoutAction
               },
               {
-                path:"add-food"
+                path:"add-food",
+                element: <AddFoodPage/>,
+                action: addFoodAction
               },
               {
                 path:"edit-workout/:workoutId"

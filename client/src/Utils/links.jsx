@@ -7,6 +7,7 @@ import { LiaDumbbellSolid } from "react-icons/lia";
 import { BiFoodMenu } from "react-icons/bi";
 import { TbMessageChatbot } from "react-icons/tb";
 import { RiAdminLine } from "react-icons/ri";
+import { IoFastFood } from "react-icons/io5";
 
 const links = [
     {
@@ -33,6 +34,12 @@ const links = [
         text:'Recipe List', 
         path: 'recipe-list', 
         icon:<BiFoodMenu/>
+    },
+    {
+        text: 'Food List',
+        path: 'food-list',
+        icon: <IoFastFood/>
+
     },
     {
         text: 'Virtual Instructor',
