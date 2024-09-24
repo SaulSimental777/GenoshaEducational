@@ -1,8 +1,11 @@
 import React from 'react'
+import FoodDisplayComponent from '../Components/FoodDisplayComponent/FoodDisplayComponent'
 
 const FoodDisplayPage = () => {
   return (
-    <div>FoodDisplayPage</div>
+    <>
+      <FoodDisplayComponent/>
+    </>
   )
 }
 
