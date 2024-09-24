@@ -1,0 +1,61 @@
+.workout-display-container {
+  background-color: white;
+  margin: auto;
+  margin-left: 450px;
+  width: 1000px;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+  padding-bottom: 25px;
+}
+
+.workout-display-top-left img {
+  width: 400px;
+  border-radius: 10px;
+}
+
+.workout-display-top {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.workout-display-top-right {
+  margin: auto;
+  font-size: 22px;
+}
+
+.workout-display-bottom {
+  margin: auto;
+  font-size: 18px;
+  padding-left: 25px;
+  padding-right: 25px;
+  line-height: 1.5;
+  text-align: justify;
+  color: rgb(92, 92, 92);
+}
+
+.workout-display-bottom p {
+  font-weight: bold;
+}
+
+.workout-display-corner {
+  margin-top: 15px;
+  width: fit-content;
+}
+
+.workout-display-corner button {
+  cursor: pointer;
+  background-color: #0099ff;
+  color: white;
+  width: 200px;
+  height: 45px;
+  border-radius: 10px;
+  border-color: transparent;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 16px;
+}
+
+.workout-display-corner:hover {
+  transform: scale(1.05);
+  transition: 0.6s;
+}

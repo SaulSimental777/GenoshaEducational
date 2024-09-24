@@ -1,8 +1,11 @@
 import React from 'react'
+import WorkoutDisplayComponent from '../Components/WorkoutDisplayComponent/WorkoutDisplayComponent'
 
 const WorkoutDisplayPage = () => {
   return (
-    <div>WorkoutDisplayPage</div>
+    <>
+    <WorkoutDisplayComponent/>
+    </>
   )
 }
 

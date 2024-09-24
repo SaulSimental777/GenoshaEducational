@@ -6,7 +6,6 @@ import { PiBarbellLight } from "react-icons/pi";
 const Container = (props) => {
 
   const imageUrl = `http://localhost:5101/${props.image.replace("public\\uploads\\", "")}`; // Solucion temporal
-  console.log(props.muscle)
 
   return (
     <Link to={`/home/workout/${props.id}`}  style={{textDecoration: 'none', color: 'black'}}>

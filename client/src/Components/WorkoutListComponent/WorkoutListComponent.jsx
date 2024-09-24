@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect} from 'react'
 import './WorkoutListComponent.css'
-import { DashboardContext } from '../../Pages/DashboardLayout'
 import Container from '../Container/Container'
 import customFetch from '../../Utils/customFetch'
 
@@ -20,7 +19,7 @@ const WorkoutListComponent = () => {
         } catch (error) {
             console.log(error)
         } finally {
-          setIsLoading(false); // Termina la carga
+          setIsLoading(false); 
         }
       };
   

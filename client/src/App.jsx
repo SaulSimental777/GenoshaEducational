@@ -60,11 +60,13 @@ const router = createBrowserRouter([
       {
         path:"home",
         element:<DashboardLayout/>,
+        loader: profileLoader,
         children:[
           {
             index:true,
             element: <HomeStatsPage/>,
             loader: profileLoader,
+
 
           },
           {
