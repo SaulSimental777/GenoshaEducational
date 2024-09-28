@@ -18,7 +18,8 @@ import {
   DashboardLayout,
   AdminPage,
   AddWorkoutPage,
-  AddFoodPage 
+  AddFoodPage, 
+  RoutineDisplayPage
 
 } from './Pages'
 
@@ -28,7 +29,8 @@ import { loader as profileLoader } from './Components/HomeStatsComponent/HomeSta
 import { action as addFoodAction } from './Components/AddFoodComponent/AddFoodComponent'
 import { action as addWorkoutAction } from './Components/AddWorkoutComponent/AddWorkoutComponent'
 import { action as addRoutineAction } from './Components/RoutineListComponent/RoutineListComponent'
-
+import { loader as allRoutineLoader } from './Components/WorkoutDisplayComponent/WorkoutDisplayComponent'
+import { loader as getRoutineWorkout } from './Components/RoutineDisplayComponent/RoutineDisplayComponent'
 
 
 
@@ -87,6 +89,12 @@ const router = createBrowserRouter([
             action: addRoutineAction
           },
           {
+            path:"routine/:routineId",
+            element: <RoutineDisplayPage/>,
+            loader: getRoutineWorkout
+   
+          },
+          {
             path:"food-list",
             element:<FoodListPage/>
 
@@ -97,7 +105,8 @@ const router = createBrowserRouter([
           },
           {
             path: "workout/:workoutId",
-            element:<WorkoutDisplayPage/>
+            element:<WorkoutDisplayPage/>,
+            loader: allRoutineLoader
 
           },
           {

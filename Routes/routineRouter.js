@@ -8,6 +8,7 @@ import {
     removeExercise,
     updateRoutineExercise,
     updateRoutine,
+    getRoutineExercises,
 } from '../Controllers/routineControllers.js'
 import { validateRoutineInput } from '../Middleware/validationMiddleware.js'
 
@@ -21,7 +22,8 @@ router
     .patch(updateRoutine)
     .delete(deleteRoutine)
 
-router.post('/:id/exercise', appendExercise);
+router.post('/addExercise', appendExercise);
+router.get('/routine-workouts/:id', getRoutineExercises);
 router.patch('/:id/exercise/:exerciseId', updateRoutineExercise);
 router.delete('/:id/exercise/:exerciseId', removeExercise);
 

@@ -88,14 +88,29 @@ export const updateRoutine = async(req, res) => {
 }
 
 export const appendExercise = async(req, res) => {
-    let routine = await Routine.findById(req.params.id);
-    let exercise = await Exercise.findById(req.body.exerciseId);
+    const {routineId, exerciseId } = req.body;
+
+    let routine = await Routine.findById(routineId)
+    let exercise = await Exercise.findById(exerciseId);
     routine.exercises.push(exercise._id)
     await routine.save();
 
     res.status(StatusCodes.OK).json({msg: 'exercise added succesfully'})
 
 
+}
+
+export const getRoutineExercises = async (req, res) => {
+    try {
+
+        const routine = await Routine.findById(req.params.id).populate('exercises')
+        res.status(StatusCodes.OK).json({exercises: routine.exercises})
+        
+    } catch (error) {
+
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: 'Error retrieving exercices', error });
+        
+    }
 }
 
 export const removeExercise = async(req, res) => {

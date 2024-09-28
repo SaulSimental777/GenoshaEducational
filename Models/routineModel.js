@@ -5,7 +5,8 @@ const routineSchema = new mongoose.Schema(
         Id:String,
         name:String,
         exercises:[{
-            exercise:{type: mongoose.Schema.Types.ObjectId, ref: 'Exercise'},
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Exercise',
             sets: Number,
             reps: Number
         }],

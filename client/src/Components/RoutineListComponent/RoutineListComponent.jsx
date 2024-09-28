@@ -32,7 +32,6 @@ const RoutineListComponent = () => {
     }
 
     const navigation = useNavigation()
-    console.log(navigation);
     const isSubmitting = navigation.state === 'submitting'
 
   const [all_routines, setAll_Routine] = useState([]);
@@ -45,7 +44,6 @@ const RoutineListComponent = () => {
       try {
         const { data } = await customFetch.get('/routines/allroutines');
         setAll_Routine(data.routines);
-        console.log(data)
 
       } catch (error) {
           console.log(error)
@@ -57,23 +55,26 @@ const RoutineListComponent = () => {
     fetchAllRoutine();
   }, []);
 
+
+
   return (
     <div className="routine-list">
-        <div className="routine-list-container">
-            <hr />
-          {all_routines.map((routines, index)=>{
-            return <><div key={index} className="listproduct-format-main listproduct-format">
-              <p>{routines.name}</p>
-              <p>{routines.createdBy}</p>
-              <div className="listproduct-allproducts-btn">
-                <button>Edit</button>
-                <button>Remove</button>
+
+          <div className="routine-list-container">
+            {all_routines.map((routines, index)=>{
+              return <><Link to={`/home/routine/${routines._id}`} style={{textDecoration: 'none', color: 'black'}}><div key={index} className="routine-list-format">
+                <div className="routine-list-format-text">
+                  <h1>{routines.name}</h1>
+                  <p>{routines.createdBy}</p>
+                </div>
+                <div className="routine-list-format-logo">
+                  <PiBarbellLight size={50} color='0099ff'/>
+                </div>
               </div>
-            </div>
-            <hr />
-            </>
-          })}
-        </div>
+              </Link>
+              </>
+            })}
+          </div>
         <div className="routine-add" onClick={togglePopup}>
             <IoIosCreate size={75} color='0099ff'/>
         </div>
@@ -88,9 +89,9 @@ const RoutineListComponent = () => {
                         <p>Routine name</p>
                         <input type="text" name='name' required />
                     </div>
-                    <button type='submit'  disabled = {isSubmitting} className="popup-accept">
-                        {isSubmitting ? 'Creating Routine...' : 'CREATE'}
-                    </button>
+                      <button type='submit'  disabled = {isSubmitting} className="popup-accept" >
+                          {isSubmitting ? 'Creating Routine...' : 'CREATE'}
+                      </button>
                 </Form>
                 <button onClick={togglePopup} className="popup-accept">CANCEL</button>
             </div>
