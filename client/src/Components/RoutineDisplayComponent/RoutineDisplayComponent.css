@@ -1,0 +1,9 @@
+.routine-workout-collection-container {
+  display: grid;
+  margin: auto;
+  width: fit-content;
+  gap: 20px;
+  height: fit-content;
+  margin-left: 225px;
+  grid-template-columns: 1fr 1fr;
+}

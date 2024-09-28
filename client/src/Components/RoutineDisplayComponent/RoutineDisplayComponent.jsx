@@ -4,6 +4,7 @@ import './RoutineDisplayComponent.css'
 import customFetch from '../../Utils/customFetch'
 import { CircleLoader } from 'react-spinners'
 import { useLoaderData } from 'react-router-dom'
+import RoutineCollections from '../RoutineCollections/RoutineCollections'
 
 
 export const loader = async ({ params }) => {
@@ -22,8 +23,6 @@ const RoutineDisplayComponent = () => {
     const [one_routine, setOne_Routine] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const { exercises } = useLoaderData()
-
-    console.log(exercises)
 
 
   
@@ -53,9 +52,19 @@ const RoutineDisplayComponent = () => {
         return <div>Routine not found</div>;
       }
 
+
+
   
   return (
-    <div>
+
+    <div className="routine-workout-collection">
+      <div className="routine-workout-collection-container">
+        {exercises.map((item, i) => {
+          return <RoutineCollections key={i} id={item._id}
+          name={item.name} image={item.image} description={item.description}
+          muscleGroup={item.muscleGroup}/>
+        })}
+      </div>
     </div>
   )
 }
