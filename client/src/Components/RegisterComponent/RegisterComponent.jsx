@@ -30,7 +30,6 @@ const RegisterComponent = () => {
     console.log(navigation);
     const isSubmitting = navigation.state === 'submitting'
   return (
-    <div className="form-background">
         <Form method= 'post' className='form-container'>
             <div className="form-header">
                 <PiBarbellLight size={75} color='#0099ff'/>
@@ -117,7 +116,6 @@ const RegisterComponent = () => {
             </button>
             <p className="signup-login">Already have an account? <Link to='/login'>Login here</Link></p>
         </Form>
-    </div>
   )
 }
 

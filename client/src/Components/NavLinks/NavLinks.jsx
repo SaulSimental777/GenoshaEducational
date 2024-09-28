@@ -6,6 +6,7 @@ import './NavLinks'
 
 const NavLinks = ({isBigSideBar}) => {
   const {toggleSideBar} = useDashboardContext();
+
   return (
     <div className="nav-links">
     {links.map((link)=>{

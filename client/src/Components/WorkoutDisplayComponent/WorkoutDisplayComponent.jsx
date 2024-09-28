@@ -51,9 +51,11 @@ const WorkoutDisplayComponent = () => {
                 </div>
             </div>
         </div>
+        <hr />
         <div className="workout-display-bottom">
             <p>{exercise.description}</p>
         </div>
+        <hr />
     </div>
   )
 }

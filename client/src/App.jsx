@@ -27,6 +27,7 @@ import { action as loginAction } from './Components/LoginComponent/LoginComponen
 import { loader as profileLoader } from './Components/HomeStatsComponent/HomeStatsComponent'
 import { action as addFoodAction } from './Components/AddFoodComponent/AddFoodComponent'
 import { action as addWorkoutAction } from './Components/AddWorkoutComponent/AddWorkoutComponent'
+import { action as addRoutineAction } from './Components/RoutineListComponent/RoutineListComponent'
 
 
 
@@ -66,8 +67,6 @@ const router = createBrowserRouter([
             index:true,
             element: <HomeStatsPage/>,
             loader: profileLoader,
-
-
           },
           {
             path: "virtual-instructor",
@@ -84,7 +83,8 @@ const router = createBrowserRouter([
           },
           {
             path:"routine-list",
-            element:<RoutineListPage/>
+            element:<RoutineListPage/>,
+            action: addRoutineAction
           },
           {
             path:"food-list",

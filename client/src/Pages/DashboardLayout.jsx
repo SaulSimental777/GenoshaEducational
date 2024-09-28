@@ -3,9 +3,12 @@ import { Outlet } from 'react-router-dom'
 import SmallSideBar from '../Components/SmallSideBar/SmallSideBar'
 import BigSidebar from '../Components/BigSidebar/BigSidebar'
 import Navbar from '../Components/Navbar/Navbar'
+import { useLoaderData } from 'react-router-dom'
 
 
 export const DashboardContext = createContext()
+
+
 
 const DashboardLayout = () => {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -14,10 +17,13 @@ const DashboardLayout = () => {
 
   }
 
+  const user = useLoaderData();
+
   return (
     <DashboardContext.Provider value={({
       showSidebar,
       toggleSideBar,
+      user
     })}> 
       <main className="dashboard">
         <SmallSideBar/>

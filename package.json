@@ -36,6 +36,7 @@
     "nanoid": "^4.0.2",
     "nodemon": "^2.0.22",
     "react-spinners": "^0.14.1",
+    "reactjs-popup": "^2.0.6",
     "recharts": "^2.12.7"
   }
 }
