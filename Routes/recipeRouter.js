@@ -7,7 +7,8 @@ import {
     updateRecipe,
     appendFood,
     removeFood,
-    updateRecipeFood
+    updateRecipeFood,
+    getRecipeFoods
 
 
 } from '../Controllers/recipeControllers.js'
@@ -23,7 +24,8 @@ router
     .patch(updateRecipe)
     .delete(deleteRecipe)
 
-router.post('/:id/food', appendFood);
+router.post('/addIngredient', appendFood);
+router.get('/recipe-ingredients/:id', getRecipeFoods)
 router.patch('/:id/food/:foodId', updateRecipeFood);
 router.delete('/:id/food/:foodId', removeFood);
 

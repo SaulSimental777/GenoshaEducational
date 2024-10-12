@@ -1,8 +1,11 @@
 import React from 'react'
+import RecipeListComponent from '../Components/RecipeListComponent/RecipeListComponent'
 
 const RecipeListPage = () => {
   return (
-    <div>RecipeListPage</div>
+    <>
+      <RecipeListComponent/>
+    </>
   )
 }
 

@@ -2,19 +2,15 @@ import mongoose from "mongoose";
 
 const recipeSchema = new mongoose.Schema(
     {
+        Id:String,
         name:String,
         ingredients:[{
-            food:{
-                type:mongoose.Schema.Types.ObjectId,
-                ref: 'Food'
-            },
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'Food',
             quantity: Number
         }],
         description:String,
-        createdBy:{
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'User'
-        }
+        createdBy: String
     }
 );
 

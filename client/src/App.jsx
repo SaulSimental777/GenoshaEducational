@@ -19,7 +19,8 @@ import {
   AdminPage,
   AddWorkoutPage,
   AddFoodPage, 
-  RoutineDisplayPage
+  RoutineDisplayPage,
+  RecipeDisplayPage
 
 } from './Pages'
 
@@ -31,6 +32,9 @@ import { action as addWorkoutAction } from './Components/AddWorkoutComponent/Add
 import { action as addRoutineAction } from './Components/RoutineListComponent/RoutineListComponent'
 import { loader as allRoutineLoader } from './Components/WorkoutDisplayComponent/WorkoutDisplayComponent'
 import { loader as getRoutineWorkout } from './Components/RoutineDisplayComponent/RoutineDisplayComponent'
+import { action as addRecipeAction } from './Components/RecipeListComponent/RecipeListComponent'
+import { loader as getRecipeIngredient } from './Components/RecipeDisplayComponent/RecipeDisplayComponent'
+import { loader as allRecipeLoader } from './Components/FoodDisplayComponent/FoodDisplayComponent'
 
 
 
@@ -81,7 +85,14 @@ const router = createBrowserRouter([
           },
           {
             path:"recipe-list",
-            element:<RecipeListPage/>
+            element:<RecipeListPage/>,
+            action: addRecipeAction
+          },
+          {
+            path: "recipe/:recipeId",
+            element: <RecipeDisplayPage/>,
+            loader: getRecipeIngredient
+
           },
           {
             path:"routine-list",
@@ -101,7 +112,8 @@ const router = createBrowserRouter([
           },
           {
             path: "food/:foodId",
-            element:<FoodDisplayPage/>
+            element:<FoodDisplayPage/>,
+            loader: allRecipeLoader
           },
           {
             path: "workout/:workoutId",
