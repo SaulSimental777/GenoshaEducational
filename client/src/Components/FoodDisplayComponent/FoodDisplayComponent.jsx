@@ -110,7 +110,7 @@ const FoodDisplayComponent = () => {
             return <><div key={index} className="recipe-list-display-format">
               <div className="recipe-list-display-format-text">
                 <h1>{recipes.name}</h1>
-                <p>{recipes.createdBy}</p>
+                <p>{recipes.Id}</p>
                 <PiBarbellLight size={50} color='0099ff'/>
               </div>
               <div className="recipe-display-add-button">

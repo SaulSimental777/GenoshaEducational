@@ -277,7 +277,7 @@ const DailyLogPageComponent = () => {
             <div key={index} className="routine-list-display-format">
               <div className="routine-list-display-format-text">
                 <h1>{routine.name}</h1>
-                <p>{routine.createdBy}</p>
+                <p>{routine.Id}</p>
                 <PiBarbellLight size={50} color="0099ff" />
               </div>
               <div className="routine-display-add-button">
@@ -298,7 +298,7 @@ const DailyLogPageComponent = () => {
             <div key={index} className="routine-list-display-format">
               <div className="routine-list-display-format-text">
                 <h1>{recipe.name}</h1>
-                <p>{recipe.createdBy}</p>
+                <p>{recipe.Id}</p>
                 <PiBarbellLight size={50} color="0099ff" />
               </div>
               <div className="routine-display-add-button">

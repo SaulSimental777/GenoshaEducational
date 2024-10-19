@@ -49,7 +49,7 @@ export const addRoutine = async (req, res) => {
         const routine = await Routine.create({
             ...req.body,
             Id: uniqueId,
-            createdBy: username
+            createdBy: userId
         });
         user.routines.push(routine._id)
         await user.save()
@@ -166,6 +166,10 @@ export const sharedRoutine = async(req, res) => {
         const routine = await Routine.findOne({Id: routineId});
         if(!routine){
             return res.status(StatusCodes.NOT_FOUND).json({ msg: 'Routine not found'})
+        }
+
+        if(routine.createdBy == userId){
+            return res.status(StatusCodes.CONFLICT).json({msg: 'Rutina ya creada por el usuario'})
         }
 
         user.routines.push(routine._id)

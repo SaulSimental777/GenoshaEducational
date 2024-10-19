@@ -101,7 +101,7 @@ const WorkoutDisplayComponent = () => {
             return <><div key={index} className="routine-list-display-format">
               <div className="routine-list-display-format-text">
                 <h1>{routines.name}</h1>
-                <p>{routines.createdBy}</p>
+                <p>{routines.Id}</p>
                 <PiBarbellLight size={50} color='0099ff'/>
               </div>
               <div className="routine-display-add-button">

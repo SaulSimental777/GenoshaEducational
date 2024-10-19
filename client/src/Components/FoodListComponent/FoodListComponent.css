@@ -1,6 +1,6 @@
 .food-list {
   margin: 20px 200px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   row-gap: 30px;
 }
