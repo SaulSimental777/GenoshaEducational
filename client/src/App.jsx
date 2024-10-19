@@ -123,7 +123,8 @@ const router = createBrowserRouter([
           },
           {
             path:"daily-log",
-            element:<DailyLogPage/>
+            element:<DailyLogPage/>,
+            loader: profileLoader,
           },
           {
             path:"admin",

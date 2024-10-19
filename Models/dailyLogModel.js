@@ -6,23 +6,15 @@ const dailyLogSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        date:Date,
-        breakfast:[{
+        date: { type: Date, default: Date.now },
+        recipeLog:[{
             type:mongoose.Schema.Types.ObjectId,
             ref: 'Recipe'
         }],
-        lunch:[{
-            type:mongoose.Schema.Types.ObjectId,
-            ref: 'Recipe'
-        }],
-        dinner:[{
-            type:mongoose.Schema.Types.ObjectId,
-            ref: 'Recipe'
-        }],
-        routine:{
+        routineLog:[{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Routine'
-        }
+        }]
 
     }
 );

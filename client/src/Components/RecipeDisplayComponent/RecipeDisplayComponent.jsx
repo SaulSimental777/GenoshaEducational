@@ -84,7 +84,8 @@ const RecipeDisplayComponent = () => {
     <div className="recipe-food-collection-container">
       {ingredients.map((item, i) => {
         return <RecipeCollections key={i} id={item._id}
-        name={item.name} image={item.image} calories={item.calories}/>
+        name={item.name} image={item.image} calories={item.calories} protein={item.protein}
+        fats={item.fats} carbs={item.carbs}/>
       })}
     </div>
     <div className="recipe-stats">

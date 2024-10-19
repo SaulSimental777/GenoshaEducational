@@ -8,6 +8,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 10px 1px rgb(0, 0, 0, 0.1);
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 15px;
 }
 
 .recipecollection-left img {
@@ -29,12 +30,12 @@
 }
 
 .recipecollection-options {
-  margin-left: 5px;
-  margin-top: 20px;
+  margin-left: 18px;
+  margin-top: 10px;
   display: flex;
   gap: 10px;
   width: fit-content;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .recipecollection-options button {
@@ -44,6 +45,36 @@
   color: white;
   cursor: pointer;
   height: 30px;
-  width: 100px;
-  margin-right: 10px;
+  width: 225px;
+}
+
+.ingredient-total {
+  display: grid;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.ingredient-total-row {
+  display: flex;
+  gap: 55px;
+}
+
+.ingredient-macro {
+  background-color: #747474;
+  width: 200px;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.ingredient-macro h3 {
+  margin-top: 5px;
+}
+
+.recipecollection-name {
+  margin-top: 5px;
+  font-size: 18px;
+  margin-left: 5px;
 }
