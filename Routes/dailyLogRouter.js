@@ -1,14 +1,16 @@
 import { Router } from 'express'
 import {
     createDailyLog,
-    appendRoutine
+    appendRoutine,
+    appendRecipe
 }
 from '../Controllers/dailyLogControllers.js'
 
 
 const router = Router()
 router.get('/addDailyLog', createDailyLog)
-router.post('/addRecipeLog', appendRoutine)
+router.post('/addRoutineLog', appendRoutine)
+router.post('/addRecipeLog', appendRecipe)
 
 
 

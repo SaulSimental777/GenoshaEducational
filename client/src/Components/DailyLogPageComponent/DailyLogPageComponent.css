@@ -1,0 +1,72 @@
+.dailylog-container {
+  margin: auto;
+  margin-left: 250px;
+  height: fit-content;
+  display: flex;
+}
+
+.dailylog-meals {
+  background-color: white;
+  width: 450px;
+  height: 400px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.dailylog-routines {
+  background-color: white;
+  width: 450px;
+  height: 350px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 35px;
+}
+
+.dailylog-chart {
+  background-color: white;
+  margin-left: 35px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 1000px;
+}
+
+.dailylog-list-display-format {
+  background-color: white;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 400px;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.dailylog-data button {
+  background-color: #0099ff;
+  border-radius: 5px;
+  border-color: transparent;
+  color: white;
+  cursor: pointer;
+  width: 300px;
+  height: 35px;
+  margin-left: 70px;
+  margin-top: 15px;
+}
+
+.dailylog-recipelist {
+  height: 310px;
+  overflow-y: auto;
+}
+
+.dailylog-routinelist {
+  height: 260px;
+  overflow-y: auto;
+}
+
+.dailylog-responsivechart {
+  margin-top: 50px;
+}
+
+.dailylog-chart h3 {
+  margin-top: 10px;
+  margin-left: 5px;
+  font-size: 25px;
+}
