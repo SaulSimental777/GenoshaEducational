@@ -90,7 +90,12 @@ export const appendFood = async (req, res) => {
 
     let recipe = await Recipe.findById(recipeId)
     let food = await Food.findById(foodId);
+    recipe.totalCalories += food.calories
+    recipe.totalProtein += food.protein
+    recipe.totalFats += food.fats
+    recipe.totalCarbs += food.carbs
     recipe.ingredients.push(food._id)
+
     await recipe.save();
 
     res.status(StatusCodes.OK).json({msg: 'ingredient added succesfully'})

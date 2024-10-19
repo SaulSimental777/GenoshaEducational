@@ -148,3 +148,37 @@ export const updateRoutineExercise = async(req, res) => {
 
 }
 
+export const sharedRoutine = async(req, res) => {
+
+    const{routineId } = req.body;
+
+    const {token} = req.cookies; 
+        
+    if (!token) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ error: 'Authentication token missing' });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    const userId = decoded.userId
+    const user = await User.findById(userId);
+
+    try{
+        const routine = await Routine.findOne({Id: routineId});
+        if(!routine){
+            return res.status(StatusCodes.NOT_FOUND).json({ msg: 'Routine not found'})
+        }
+
+        user.routines.push(routine._id)
+        await user.save();
+
+        return res.status(StatusCodes.OK).json({msg: 'Routine Added'})
+
+       
+    }
+    catch (error){
+        console.log(error)
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({msg: 'Error adding Routine'})
+    }
+
+}
+

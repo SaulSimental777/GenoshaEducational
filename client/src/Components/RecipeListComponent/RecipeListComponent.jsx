@@ -10,8 +10,6 @@ import customFetch from '../../Utils/customFetch';
 export const action = async ({ request }) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
-
-  
     try {
       await customFetch.post('/recipes/addrecipe', data);
       toast.success('Recipe Created');
@@ -37,23 +35,28 @@ const RecipeListComponent = () => {
   const [all_recipes, setAll_Recipe] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const fetchAllRecipe = async () => {
+    try {
+      const { data } = await customFetch.get('/recipes/allrecipes');
+      setAll_Recipe(data.recipes);
+
+    } catch (error) {
+        console.log(error)
+    } finally {
+      setIsLoading(false); 
+    }
+  };
 
 
   useEffect(() => {
-    const fetchAllRecipe = async () => {
-      try {
-        const { data } = await customFetch.get('/recipes/allrecipes');
-        setAll_Recipe(data.recipes);
-
-      } catch (error) {
-          console.log(error)
-      } finally {
-        setIsLoading(false); 
-      }
-    };
-
     fetchAllRecipe();
   }, []);
+
+  useEffect(() => {
+    if (!isSubmitting && navigation.state === 'idle') {
+      fetchAllRecipe();
+    }
+  }, [isSubmitting, navigation.state]);
 
   return (
     <div className="recipe-list">

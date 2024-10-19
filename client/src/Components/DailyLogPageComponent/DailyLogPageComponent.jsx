@@ -35,24 +35,26 @@ const DailyLogPageComponent = () => {
     setShowRecipes(!showRecipes);
   };
 
+  const fetchDailyLog = async () => {
+    try {
+      const dailyLogResponse = await customFetch.get('/dailylog/addDailyLog');
+      setDailyLog(dailyLogResponse.data.dailyLog);
+
+      const routinesResponse = await customFetch.get('/routines/allroutines');
+      setRoutinesLog(routinesResponse.data.routines);
+
+      const recipesResponse = await customFetch.get('/recipes/allrecipes');
+      setRecipesLog(recipesResponse.data.recipes);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    const fetchDailyLog = async () => {
-      try {
-        const dailyLogResponse = await customFetch.get('/dailylog/addDailyLog');
-        setDailyLog(dailyLogResponse.data.dailyLog);
-
-        const routinesResponse = await customFetch.get('/routines/allroutines');
-        setRoutinesLog(routinesResponse.data.routines);
-
-        const recipesResponse = await customFetch.get('/recipes/allrecipes');
-        setRecipesLog(recipesResponse.data.recipes);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     fetchDailyLog();
   }, []);
+
+
 
   const addRoutine = async (routineId) => {
     try {
@@ -61,6 +63,8 @@ const DailyLogPageComponent = () => {
         userId: user._id,
       });
       toast.success('Routine Added');
+
+      fetchDailyLog();
     } catch (error) {
       toast.error(error?.response?.data?.msg);
       return error;
@@ -74,6 +78,7 @@ const DailyLogPageComponent = () => {
         userId: user._id,
       });
       toast.success('Recipe Added');
+      fetchDailyLog();
     } catch (error) {
       toast.error(error?.response?.data?.msg);
       return error;
@@ -165,6 +170,13 @@ const DailyLogPageComponent = () => {
       harrisCarbs = (userTotalCalories - ((harrisProtein * 4) + (0.25 * userTotalCalories))) / 4
   }
 
+  const totalCalories = dailyLogResponse.recipeLog.reduce((total, item) => total + item.totalCalories, 0);
+  const totalProtein = dailyLogResponse.recipeLog.reduce((total, item) => total + item.totalProtein, 0);
+  const totalCarbs = dailyLogResponse.recipeLog.reduce((total, item) => total + item.totalCarbs, 0);
+  const totalFats = dailyLogResponse.recipeLog.reduce((total, item) => total + item.totalFats, 0);
+
+  console.log(dailyLogResponse)
+
 
   
 
@@ -172,26 +184,26 @@ const DailyLogPageComponent = () => {
   const data = [
     {
       name: 'Calories',
-      Goal: TotalHarris_TMB,
-      Today: 2500,
+      Goal: Math.round(TotalHarris_TMB, 0),
+      Today: totalCalories,
 
     },
     {
       name: 'Protein',
-      Goal: harrisProtein,
-      Today: 75,
+      Goal: Math.round(harrisProtein, 0),
+      Today: totalProtein,
 
     },
     {
       name: 'Carbs',
-      Goal: harrisCarbs,
-      Today: 105,
+      Goal: Math.round(harrisCarbs, 0),
+      Today: totalCarbs,
    
     },
     {
       name: 'Fat',
-      Goal: harrisFat,
-      Today: 52,
+      Goal: Math.round(harrisFat, 0),
+      Today: totalFats,
     },
     
   ];
@@ -203,36 +215,34 @@ const DailyLogPageComponent = () => {
         <div className="dailylog-meals">
           <h3>Today's Meals</h3>
           <div className="dailylog-recipelist">
-            {dailyLogResponse?.recipeLog?.length > 0 ? (
+            {
               dailyLogResponse.recipeLog.map((item, index) => (
                 <div key={index} className="dailylog-list-display-format">
                   <div className="dailylog-list-display-format-text">
-                    <h1>{item.name}</h1>
+                    <h2>{item.name}</h2>
                     <PiBarbellLight size={50} color="0099ff" />
                   </div>
                 </div>
               ))
-            ) : (
-              <p>No meals logged for today.</p>
-            )}
+
+            }
           </div>
           <button onClick={toggleListRecipes}>Add Recipe</button>
         </div>
         <div className="dailylog-routines">
           <h3>Today's Routines</h3>
             <div className="dailylog-routinelist">
-                {dailyLogResponse?.routineLog?.length > 0 ? (
+                {
                 dailyLogResponse.routineLog.map((item, index) => (
                     <div key={index} className="dailylog-list-display-format">
                     <div className="dailylog-list-display-format-text">
-                        <h1>{item.name}</h1>
+                        <h2>{item.name}</h2>
                         <PiBarbellLight size={50} color="0099ff" />
                     </div>
                     </div>
                 ))
-                ) : (
-                <p>No routines logged for today.</p>
-                )}
+                
+                }
             </div>
           <button onClick={toggleListRoutines}>Add Routine</button>
         </div>

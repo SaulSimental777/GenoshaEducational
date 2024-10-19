@@ -9,6 +9,7 @@ import {
     updateRoutineExercise,
     updateRoutine,
     getRoutineExercises,
+    sharedRoutine,
 } from '../Controllers/routineControllers.js'
 import { validateRoutineInput } from '../Middleware/validationMiddleware.js'
 
@@ -23,6 +24,7 @@ router
     .delete(deleteRoutine)
 
 router.post('/addExercise', appendExercise);
+router.post('/shareRoutine', sharedRoutine)
 router.get('/routine-workouts/:id', getRoutineExercises);
 router.patch('/:id/exercise/:exerciseId', updateRoutineExercise);
 router.delete('/:id/exercise/:exerciseId', removeExercise);

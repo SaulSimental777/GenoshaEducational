@@ -5,6 +5,7 @@ import { IoIosCreate } from "react-icons/io";
 import { PiBarbellLight } from "react-icons/pi";
 import { toast } from 'react-toastify';
 import customFetch from '../../Utils/customFetch';
+import { FaSlideshare } from "react-icons/fa";
 
 export const action = async ({ request }) => {
     const formData = await request.formData();
@@ -26,9 +27,15 @@ export const action = async ({ request }) => {
 const RoutineListComponent = () => {
 
     const [showPopup, setShowPopup] = useState(false)
+    const [showShare, setShowShare] = useState(false)
     const togglePopup = () =>{
       setShowPopup(!showPopup)
   
+    }
+
+    const toggleShare = () => {
+      setShowShare(!showShare)
+
     }
 
     const navigation = useNavigation()
@@ -37,23 +44,43 @@ const RoutineListComponent = () => {
   const [all_routines, setAll_Routine] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const fetchAllRoutine = async () => {
+    try {
+      const { data } = await customFetch.get('/routines/allroutines');
+      setAll_Routine(data.routines);
+
+    } catch (error) {
+        console.log(error)
+    } finally {
+      setIsLoading(false); 
+    }
+  };
+
 
 
   useEffect(() => {
-    const fetchAllRoutine = async () => {
-      try {
-        const { data } = await customFetch.get('/routines/allroutines');
-        setAll_Routine(data.routines);
-
-      } catch (error) {
-          console.log(error)
-      } finally {
-        setIsLoading(false); 
-      }
-    };
-
     fetchAllRoutine();
   }, []);
+
+  useEffect(() => {
+    if (!isSubmitting && navigation.state === 'idle') {
+      fetchAllRoutine();
+    }
+  }, [isSubmitting, navigation.state]);
+
+  const shareRoutine = async (event) => {
+    event.preventDefault(); 
+    const formShareData = new FormData(event.target);
+    const routineId = formShareData.get('routineId'); 
+
+    try {
+        await customFetch.post('routines/shareRoutine', { routineId });
+        toast.success('Routine Shared');
+        fetchAllRoutine(); 
+    } catch (error) {
+        toast.error(error?.response?.data?.msg);
+    }
+};
 
 
 
@@ -75,8 +102,13 @@ const RoutineListComponent = () => {
               </>
             })}
           </div>
-        <div className="routine-add" onClick={togglePopup}>
-            <IoIosCreate size={75} color='0099ff'/>
+        <div className="routine-addshare">
+          <div className="routine-add" onClick={togglePopup}>
+              <IoIosCreate size={75} color='0099ff'/>
+          </div>
+          <div className="routine-share" onClick={toggleShare}>
+              <FaSlideshare size={75} color= 'red'/>
+          </div>
         </div>
         <div className={showPopup ?
         'routine-popup show-popup':'routine-popup'}>
@@ -94,6 +126,24 @@ const RoutineListComponent = () => {
                       </button>
                 </Form>
                 <button onClick={togglePopup} className="popup-accept">CANCEL</button>
+            </div>
+        </div>
+        <div className={showShare ?
+        'routine-sharepopup show-share':'routine-sharepopup'}>
+            <div className="share-content">
+                <Form method= 'post' onSubmit={shareRoutine}>
+                    <div className="share-logo">
+                        <PiBarbellLight size={50} color='red'/>
+                    </div>
+                    <div className="share-field">
+                        <p>Routine share</p>
+                        <input type="text" name='routineId' required />
+                    </div>
+                      <button type='submit'  disabled = {isSubmitting} className="share-accept" >
+                          {isSubmitting ? 'Getting Routine...' : 'GET'}
+                      </button>
+                </Form>
+                <button onClick={toggleShare} className="share-accept">CANCEL</button>
             </div>
         </div>
     </div>

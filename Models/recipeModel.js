@@ -10,7 +10,11 @@ const recipeSchema = new mongoose.Schema(
             quantity: Number
         }],
         description:String,
-        createdBy: String
+        createdBy: String,
+        totalCalories:{ type: Number, default: 0 },
+        totalProtein:{ type: Number, default: 0 },
+        totalCarbs:{ type: Number, default: 0 },
+        totalFats:{ type: Number, default: 0 },
     }
 );
 

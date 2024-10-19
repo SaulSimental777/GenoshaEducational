@@ -27,13 +27,6 @@ const RecipeDisplayComponent = () => {
 
 
 
-  const totalCalories = ingredients.reduce((total, item) => total + item.calories, 0)
-  const totalProteins = ingredients.reduce((total, item) => total + item.protein, 0)
-  const totalFats = ingredients.reduce((total, item) => total + item.fats, 0)
-  const totalCarbs = ingredients.reduce((total, item) => total + item.carbs, 0)
-
-
-
 
 
 
@@ -64,15 +57,15 @@ const RecipeDisplayComponent = () => {
     const data = [
       {
         macro:'Protein',
-        A:totalProteins
+        A:one_recipe.totalProtein
       },
       {
         macro:'Fat',
-        A:totalFats
+        A: one_recipe.totalFats
       },
       {
         macro: 'Carbs',
-        A:totalCarbs
+        A: one_recipe.totalCarbs
       }
 
     ];
@@ -105,21 +98,21 @@ const RecipeDisplayComponent = () => {
       <div className="recipe-total">
           <div className="recipe-total-row">
             <div className="recipe-macro">
-              <h3>{totalCalories}</h3>
+              <h3>{one_recipe.totalCalories}</h3>
               <p>Calories</p>
             </div>
             <div className="recipe-macro">
-              <h3>{totalProteins} g</h3>
+              <h3>{one_recipe.totalProtein} g</h3>
               <p>Protein</p>
             </div>
           </div>
           <div className="recipe-total-row">
             <div className="recipe-macro">
-                <h3>{totalCarbs} g</h3>
+                <h3>{one_recipe.totalCarbs} g</h3>
                 <p>Carbs</p>
             </div>
             <div className="recipe-macro">
-              <h3>{totalFats} g</h3>
+              <h3>{one_recipe.totalFats} g</h3>
               <p>Fat</p>
             </div>
           </div>
