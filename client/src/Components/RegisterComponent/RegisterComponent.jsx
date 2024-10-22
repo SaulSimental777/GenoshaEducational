@@ -3,7 +3,7 @@ import './RegisterComponent.css'
 import { Form, redirect, useNavigation, Link} from 'react-router-dom'
 import customFetch from '../../Utils/customFetch'
 import { toast } from 'react-toastify'
-import { PiBarbellLight } from "react-icons/pi";
+import { PiBookLight } from "react-icons/pi";
 import { GENDER_CATEGORY, PAL_CATEGORY } from '../../../../Utils/Constants'
 import { GOAL_CATEGORY } from '../../../../Utils/Constants'
 
@@ -32,7 +32,7 @@ const RegisterComponent = () => {
   return (
         <Form method= 'post' className='form-container'>
             <div className="form-header">
-                <PiBarbellLight size={75} color='#0099ff'/>
+                <PiBookLight size={75} color='#0099ff'/>
                 <h1>Register</h1>
             </div>
             <div className="signup-fields">
@@ -73,7 +73,7 @@ const RegisterComponent = () => {
                     </select>
                 </div>
             </div>
-            <div className="signup-fields">
+            {/* <div className="signup-fields">
                 <div className="signup-containers">
                     <p>Weight</p>
                     <input name='weight' type="number" placeholder='Kilograms'  required />
@@ -82,8 +82,8 @@ const RegisterComponent = () => {
                     <p>Height</p>
                     <input name='height' type="number" placeholder='Centimeters'  required />
                 </div>
-            </div>
-            <div className="signup-large-field">
+            </div> */}
+            {/* <div className="signup-large-field">
                 <div className="signup-containers">
                     <p>Goal</p>
                     <select   name="goal" >
@@ -96,8 +96,8 @@ const RegisterComponent = () => {
                         })}
                     </select>
                 </div>
-            </div>
-            <div className="signup-large-field">
+            </div> */}
+            {/* <div className="signup-large-field">
                 <div className="signup-containers">
                     <p>Physical activity level</p>
                     <select   name="pal" >
@@ -110,7 +110,7 @@ const RegisterComponent = () => {
                         })}
                     </select>
                 </div>
-            </div>
+            </div> */}
             <button type='submit' disabled= {isSubmitting}>
                     {isSubmitting ? 'Signing up...' : 'Sign up'}
             </button>

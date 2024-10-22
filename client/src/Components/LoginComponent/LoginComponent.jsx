@@ -3,7 +3,7 @@ import './LoginComponent.css'
 import { Link, Form, redirect, useNavigation } from 'react-router-dom'
 import customFetch from '../../Utils/customFetch';
 import { toast } from "react-toastify";
-import { PiBarbellLight } from "react-icons/pi";
+import { PiBookLight } from "react-icons/pi";
 
 export const action = async ({request}) => {
     const formData = await request.formData();
@@ -29,7 +29,7 @@ const LoginComponent = () => {
   return (
         <Form method = 'post' className="login-container">
             <div className="form-header">
-                <PiBarbellLight size={75} color='#0099ff'/>
+                <PiBookLight size={75} color='#0099ff'/>
                 <h1>Login</h1>
             </div>
             <div className="login-fields">
