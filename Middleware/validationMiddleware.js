@@ -64,11 +64,11 @@ export const validateRegisterInput = withValidationErrors([
     body('password').notEmpty().withMessage('password is required')
     .isLength({min:8}).withMessage('password must be at least 8 characters long'),
     body('birthDate').notEmpty().withMessage('Birth date is required'),
-    body('weight').notEmpty().withMessage('Weight is required'),
-    body('height').notEmpty().withMessage('Height is required'),
+/*     body('weight').notEmpty().withMessage('Weight is required'),
+    body('height').notEmpty().withMessage('Height is required'), */
     body('gender').isIn(Object.values(GENDER_CATEGORY)).withMessage('Invalid gender value'),
-    body('goal').isIn(Object.values(GOAL_CATEGORY)).withMessage('Invalid goal category'),
-    body('pal').isIn(Object.values(PAL_CATEGORY)).withMessage('Invalid physical activity level category'),
+    /* body('goal').isIn(Object.values(GOAL_CATEGORY)).withMessage('Invalid goal category'),
+    body('pal').isIn(Object.values(PAL_CATEGORY)).withMessage('Invalid physical activity level category') */,
 ]);
 
 export const validateLoginInput = withValidationErrors([
